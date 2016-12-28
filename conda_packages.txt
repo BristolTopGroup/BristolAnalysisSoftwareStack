@@ -1,0 +1,9 @@
+git
+wget
+pycurl
+root-numpy
+numpy
+matplotlib
+pytables
+rootpy
+pandas
