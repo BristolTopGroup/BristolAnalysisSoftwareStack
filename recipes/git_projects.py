@@ -3,7 +3,9 @@ import os
 from git import GitConfigParser, Repo
 import six
 
+# github group
 GROUP = "BristolTopGroup"
+# mapping of github user names to aliases (for remotes)
 DEVELOPERS = {
     "DouglasBurns": "doug",
     "EmyrClement": 'emyr',
