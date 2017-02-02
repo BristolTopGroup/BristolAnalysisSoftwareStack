@@ -26,3 +26,17 @@
 *.exe
 *.out
 *.app
+
+# folders created by project
+DEV
+workspace
+
+# Eclipse
+.project
+.pydevproject
+.cproject
+
+# vagrant
+.vagrant
+
+setup.json

@@ -1,0 +1,8 @@
+GitPython
+python-cjson
+uncertainties
+nose
+sphinx
+git+https://github.com/kreczko/hepshell.git
+git+https://github.com/raggleton/htcondenser.git
+six

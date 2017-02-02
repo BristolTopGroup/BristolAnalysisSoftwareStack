@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
+import os
+import readline
+import sys
+import warnings
+
+warnings.filterwarnings("ignore")
+
+NTPROOT = os.path.join(os.environ['HEP_PROJECT_ROOT'], 'DEV', 'NTP')
+os.environ['HEP_PROJECT_ROOT'] = NTPROOT
+
+import hepshell
+hepshell.settings.COMMANDS = [
+    'hepshell.commands',
+    'ntp.commands',
+]
+
+if len(sys.argv) == 1:
+    if not sys.stdout.isatty():
+        rc = hepshell.run_command(['help'])
+        sys.exit(rc)
+    else:
+        os.environ['TERM'] = 'vt100'
+        name_of_this_script = os.path.basename(sys.argv[0])
+        hepshell.run_cli('{0} > '.format(name_of_this_script))
+else:
+    args = sys.argv[1:]
+    rc = hepshell.run_command(args)
+    sys.exit(rc)
