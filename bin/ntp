@@ -8,6 +8,9 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
+NTPROOT = os.path.join(os.environ['HEP_PROJECT_ROOT'], 'DEV', 'NTP')
+os.environ['HEP_PROJECT_ROOT'] = NTPROOT
+
 import hepshell
 hepshell.settings.COMMANDS = [
     'hepshell.commands',

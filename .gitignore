@@ -38,3 +38,5 @@ workspace
 
 # vagrant
 .vagrant
+
+setup.json

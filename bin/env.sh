@@ -23,12 +23,6 @@ if [ -n "${old_projectbase}" ] ; then
   PYTHONPATH=`python ${HEP_PROJECT_ROOT}/bin/remove_from_env.py "$PYTHONPATH" "${old_projectbase}"`
 fi
 
-if [ -z "${PATH}" ]; then
-   PATH=$HEP_PROJECT_ROOT/bin; export PATH
-else
-   PATH=$HEP_PROJECT_ROOT/bin:$PATH; export PATH
-fi
-
 if [ -z "${PYTHONPATH}" ]; then
    PYTHONPATH=$HEP_PROJECT_ROOT/python; export PYTHONPATH
 else
@@ -43,6 +37,19 @@ source ${HEP_PROJECT_ROOT}/recipes/cms_extras.sh
 source ${HEP_PROJECT_ROOT}/recipes/grid_tools.sh
 source ${HEP_PROJECT_ROOT}/recipes/git_projects.sh
 
+# make sure BSS is at the start of PATH
+if [ -z "${PATH}" ]; then
+   PATH=$HEP_PROJECT_ROOT/bin; export PATH
+else
+   PATH=$HEP_PROJECT_ROOT/bin:$PATH; export PATH
+fi
+
 echo "The Bristol Software Stack is now ready to go"
+
+# fix for a current NTP problem
+if [ ! -L "setup.json" ]
+then
+	ln -s DEV/NTP/setup.json setup.json
+fi
 
 #bss setup
