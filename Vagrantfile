@@ -31,6 +31,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # if you have an existing vagrant box after this was added in, please run `vagrant provision`
   # after `vagrant up`.
   config.vm.provision "file", source: "~/.gitconfig", destination: "/home/vagrant/.gitconfig"
+  config.vm.provision "shell", inline: <<-SHELL
+      sudo mkdir /software
+      sudo chown vagrant /software
+   SHELL
 
   config.vm.provider "virtualbox" do |vb|
     vb.cpus = 2
